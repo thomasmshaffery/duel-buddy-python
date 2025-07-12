@@ -1,5 +1,5 @@
 from duelist import Duelist
-from dos_ranks import Ranks
+from dos import matrix
 
 class Duel():
     def __init__(self):
@@ -9,7 +9,10 @@ class Duel():
         self.currentRound = 4
         self.ring = "Default"
         self.sport = "dos"
-        self.matrix = []
+        self.matrix = matrix
+
+    def setRingName(self, name):
+        self.ring = name
         
     def getRound(self):
         return self.currentRound
