@@ -7,21 +7,12 @@ class Duel():
         self.duelist1.name = "Dummy"
         self.duelist2 = Duelist()
         self.currentRound = 4
-        self.ring = "Test"
+        self.ring = "Default"
         self.sport = "dos"
         self.matrix = []
-
-        def setDuelist1(Duelist):
-            self.duelist1 = Duelist()
         
-        def setDuelist2(Duelist):
-            self.duelist2 = Duelist()
-        
-        def printDuelists(self):
-            print(duelists)
-        
-        def getRound(self):
-            return currentRound
+    def getRound(self):
+        return self.currentRound
 
     def printRound(self):
         print("Round:" + self.getRound() )

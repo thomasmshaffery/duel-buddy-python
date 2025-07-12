@@ -26,13 +26,12 @@ main_frame.grid_columnconfigure(weight=1, index=0)
 
 # Command to create a ring containing a duel
 
-def handleRing():
+def handleRing(index):
     ringName = input("Enter a ring name: ")
     duel = Duel()
     print(duel.ring)
     duel.ring = ringName
-    print(duel.ring)
-    print(duel.currentRound)
+    duel.duelist1.setName("Moron")
 
 
 # Instantiating ring buttons
@@ -41,7 +40,7 @@ i = 0
 buttons = [None]
 
 while i < 1:
-    buttons[i] = tk.Button(main_frame, text="Create Ring", command=handleRing)
+    buttons[i] = tk.Button(main_frame, text="Create Ring", command=handleRing(i))
     i += 1
 
 # Adding the ring buttons to the grid
