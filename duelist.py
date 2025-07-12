@@ -3,7 +3,7 @@ from dos_ranks import Ranks
 class Duelist():
     def __init__(self):
         self.name = ""
-        self.rank = ""
+        self.rank = None
         self.mods = 0
         self.score = 0
         self.mage_spell = ""
@@ -13,9 +13,12 @@ class Duelist():
 
     def getName(self):
         return self.name
+    
+    def setRank(self, rank):
+        self.rank = rank
 
     def setMods(self):
-        def allocateMods(rank):
+        def __allocateMods(rank):
             match rank:
                 case Ranks.COMMONER:
                     self.mods = 0
@@ -32,20 +35,17 @@ class Duelist():
                 case Ranks.OVERLORD:
                     self.mods = 6
 
-        allocateMods(self.rank)
-                    
+        __allocateMods(self.rank)
         
     def getMods(self):
         return self.mods
 
-    def scorePoint(self):
-        self.score += 1
+    def updateScore(self, result):
+        self.score += result
     
     def getScore(self):
         return self.score
     
-    def setRank(self, rank):
-        self.rank = rank
 
         
         

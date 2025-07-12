@@ -30,7 +30,7 @@ main_frame.grid_columnconfigure(weight=1, index=0)
 def handleRing():
     ringName = input("Enter a ring name: ")
     duel = Duel()
-    duel.duelist1.setRank(Ranks.MASTER_AT_ARMS)
+    duel.duelist1.setRank(Ranks.WARLORD)
     duel.duelist1.setMods()
     print(duel.duelist1.mods)
     
