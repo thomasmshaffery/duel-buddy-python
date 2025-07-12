@@ -6,13 +6,13 @@ class Duel():
         duelist1 = None
         duelist2 = None
         round = 0
-        ring = ""
-        sport = ""
+        ring = "Test"
+        sport = "dos"
         matrix = []
 
         def setDuelist1(Duelist):
-            self.duelist1 = Duelist
+            self.duelist1 = Duelist()
         
         def setDuelist2(Duelist):
-            self.duelist2 = Duelist
+            self.duelist2 = Duelist()
 
