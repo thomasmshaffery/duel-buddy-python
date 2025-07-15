@@ -1,6 +1,7 @@
 import tkinter as tk
+from tkinter import *
 from duel import Duel
-from dos_ranks import Ranks
+from functools import partial
 
 # Defining the main application window
 # and UI. Main window consists of six
@@ -9,8 +10,8 @@ from dos_ranks import Ranks
 
 root = tk.Tk()
 root.title("Duel Buddy")
-root.geometry("300x300")
-root.maxsize(300,300)
+root.geometry("400x400")
+root.maxsize(400,400)
 
 root_width = root.winfo_width()
 root_height = root.winfo_height()
@@ -25,33 +26,42 @@ main_frame.pack()
 main_frame.grid_configure(padx=root_width*.2, pady=(root_height//2,0))
 main_frame.grid_columnconfigure(weight=1, index=0)
 
-# Command to create a ring containing a duel
+# Handle Ring will first determine if your ring
+# is currently in use. If it is not, it will
+# provide the template to fill out the ring
+# details including: name, duelists and if
+# the duel is a title match or not. If it is
+# currently a duel in use it will simply display
+# the current state of the duel.
 
-def handleRing():
-    ringName = input("Enter a ring name: ")
-    duel = Duel()
-    duel.duelist1.setRank(Ranks.WARLORD)
-    duel.duelist1.setMods()
-    print(duel.duelist1.mods)
-    
+def handleRing(integer):
+    if duels[integer].ring == "Default":
+       createRing(integer)
 
-def createRing():
-    pass
+def hideWindow(window):
+    window.withdraw()
+
+def createRing(integer):
+    global top
+    top = Toplevel()
+    top.title("Test")
+    hideButton = tk.Button(top, height=2, width=10, text="Hide Me", command=partial(hideWindow, top)).grid()
+    top.mainloop()
 
 # Instantiating ring buttons
 
 i = 0
-buttons = [None]
+buttons = [None] * 2
 
-while i < 1:
-    buttons[i] = tk.Button(main_frame, text="Create Ring", command=handleRing)
+while i < 2:
+    buttons[i] = tk.Button(main_frame, height=2, width=10, text="Create Ring", command=partial(handleRing, i))
     i += 1
 
 # Adding the ring buttons to the grid
 # within the main frame.
 
 buttons[0].grid(row=0, column=0)
-# buttons[1].grid(row=0, column=1)
+buttons[1].grid(row=0, column=1)
 # buttons[2].grid(row=1, column=0)
 # buttons[3].grid(row=1, column=1)
 # buttons[4].grid(row=2, column=0)
